@@ -916,6 +916,121 @@
     }
 
     /* ========================================
+       MODAL — MOBILE HERO LAYOUT
+       ======================================== */
+    @media (max-width: 680px) {
+      .modal-overlay {
+        padding: 0;
+        align-items: flex-end;
+      }
+
+      .modal {
+        max-width: 100%;
+        width: 100%;
+        max-height: 95vh;
+        border-radius: 20px 20px 0 0;
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: unset;
+      }
+
+      /* Image becomes a tall hero */
+      .modal__image {
+        position: relative;
+        aspect-ratio: unset;
+        height: 52vw;
+        min-height: 200px;
+        max-height: 260px;
+        border-radius: 20px 20px 0 0;
+        flex-shrink: 0;
+      }
+
+      /* Dark gradient at bottom of image so text is readable */
+      .modal__image::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 20px 20px 0 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(20,16,12,0.08) 0%,
+          rgba(20,16,12,0.55) 70%,
+          rgba(20,16,12,0.82) 100%
+        );
+        pointer-events: none;
+      }
+
+      /* Name + desc overlay at the bottom of the image */
+      .modal__image-overlay {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px 22px 18px;
+        z-index: 2;
+      }
+
+      .modal__material-overlay {
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.75);
+        margin-bottom: 6px;
+      }
+
+      .modal__name-overlay {
+        font-family: var(--font-heading);
+        font-size: 1.7rem;
+        font-weight: 400;
+        color: #FFFFFF;
+        line-height: 1.15;
+        margin: 0;
+        text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+      }
+
+      .modal__desc-overlay {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.55;
+        margin-top: 8px;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.25);
+      }
+
+      /* Hide the original text elements inside modal__content on mobile */
+      .modal__content .modal__material,
+      .modal__content .modal__name,
+      .modal__content .modal__desc {
+        display: none;
+      }
+
+      .modal__content {
+        padding: 20px 22px 28px;
+        flex: 1;
+        overflow-y: auto;
+        justify-content: flex-start;
+      }
+
+      .modal__specs {
+        grid-template-columns: 1fr;
+        margin-bottom: 20px;
+      }
+
+      .modal__price {
+        font-size: 1.4rem;
+        margin-bottom: 16px;
+      }
+
+      .modal__cta {
+        width: 100%;
+        justify-content: center;
+        padding: 15px 24px;
+      }
+    }
+
+    /* ========================================
        RESPONSIVE — MOBILE
        ======================================== */
     @media (max-width: 680px) {
@@ -1366,6 +1481,11 @@
       </button>
       <div class="modal__image">
         <img id="modalImg" src="" alt="">
+        <div class="modal__image-overlay" style="display:none">
+          <p class="modal__material-overlay" id="modalMaterialOverlay"></p>
+          <h2 class="modal__name-overlay" id="modalNameOverlay"></h2>
+          <p class="modal__desc-overlay" id="modalDescOverlay"></p>
+        </div>
       </div>
       <div class="modal__content">
         <p class="modal__material" id="modalMaterial"></p>
@@ -1508,9 +1628,13 @@
         var img = card.querySelector('.product-card__image img');
         document.getElementById('modalImg').src = img.src;
         document.getElementById('modalImg').alt = img.alt;
-        document.getElementById('modalMaterial').textContent = card.querySelector('.product-card__material').textContent;
+        var materialText = card.querySelector('.product-card__material').textContent;
+        document.getElementById('modalMaterial').textContent = materialText;
         document.getElementById('modalName').textContent = card.dataset.name;
         document.getElementById('modalDesc').textContent = card.dataset.desc;
+        document.getElementById('modalMaterialOverlay').textContent = materialText;
+        document.getElementById('modalNameOverlay').textContent = card.dataset.name;
+        document.getElementById('modalDescOverlay').textContent = card.dataset.desc;
         document.getElementById('modalDim').textContent = card.dataset.dim;
         document.getElementById('modalThickness').textContent = card.dataset.thickness;
         document.getElementById('modalFinish').textContent = card.dataset.finish;
