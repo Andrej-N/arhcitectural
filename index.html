@@ -1016,6 +1016,18 @@
         z-index: 1;
       }
 
+      /* Keep only the first image visible for mobile/tablet sticky scroll */
+      .ss-images img {
+        opacity: 0 !important;
+        visibility: hidden !important;
+      }
+
+      .ss-images img:first-child {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: scale(1) translateY(0) !important;
+      }
+
       .ss-texts {
         float: none;
         width: 100%;
@@ -1448,6 +1460,13 @@
   <!-- ==========================================
        JAVASCRIPT
        ========================================== -->
+  <script>
+    /* Force page to always start at the top on mobile (fixes margin-top: -100vh offset) */
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
   <script>
     (function () {
       'use strict';
