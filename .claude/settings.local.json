@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:webflow.com)",
+      "WebSearch",
+      "WebFetch(domain:mcp.harishgarg.com)",
+      "WebFetch(domain:21st.dev)"
+    ]
+  }
+}
