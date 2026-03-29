@@ -1,0 +1,2024 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ada Paneli — Premium Zidne Obloge</title>
+    <meta name="description" content="Ada Paneli - Specijalizovani uvoznik premium zidnih obloga. Bambusove, MDF i PVC panele koji transformišu svaki enterijer.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           ADA PANELI — SITE 2
+           Dark Architectural Aesthetic
+           ============================================ */
+
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+        :root {
+            --black: #0A0A0A;
+            --black-light: #111111;
+            --surface: #161616;
+            --surface-hover: #1E1E1E;
+            --border: #2A2A2A;
+            --border-light: #333333;
+            --text-primary: #E8E4DE;
+            --text-secondary: #9A9590;
+            --text-muted: #5C5955;
+            --gold: #C9A96E;
+            --gold-dim: rgba(201,169,110,0.15);
+            --gold-glow: rgba(201,169,110,0.08);
+            --white: #F5F2ED;
+
+            --font-display: 'Instrument Serif', Georgia, serif;
+            --font-body: 'Hanken Grotesk', system-ui, sans-serif;
+
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-expo: cubic-bezier(0.87, 0, 0.13, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background: var(--black);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        body {
+            background: var(--black);
+            overflow-x: hidden;
+        }
+
+        /* Grain overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 200px 200px;
+        }
+
+        ::selection {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .nav {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 0 clamp(24px, 4vw, 64px);
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.5s ease, border-color 0.5s ease, backdrop-filter 0.5s ease;
+            border-bottom: 1px solid transparent;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.6) 60%, transparent 100%);
+        }
+
+        .nav.scrolled {
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(20px) saturate(1.2);
+            -webkit-backdrop-filter: blur(20px) saturate(1.2);
+            border-bottom-color: var(--border);
+        }
+
+        .nav__logo {
+            font-family: var(--font-display);
+            font-size: 28px;
+            letter-spacing: -0.5px;
+            color: var(--white);
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .nav__logo span {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 15px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .nav__links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav__links a {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav__links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.4s var(--ease-out);
+        }
+
+        .nav__links a:hover { color: var(--gold); }
+        .nav__links a:hover::after { width: 100%; }
+
+        .nav__hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            padding: 8px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .nav__hamburger div {
+            width: 28px;
+            height: 1.5px;
+            background: var(--white);
+            transition: all 0.4s var(--ease-out);
+            transform-origin: center;
+        }
+
+        .nav__hamburger.active div:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .nav__hamburger.active div:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .nav__hamburger.active div:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* Mobile menu */
+        .nav__mobile {
+            position: fixed;
+            top: 0; right: 0;
+            width: 100%;
+            height: 100dvh;
+            background: var(--black);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .nav__mobile.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .nav__mobile a {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 7vw, 56px);
+            color: var(--text-primary);
+            padding: 12px 0;
+            display: block;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: transform 0.6s var(--ease-out), opacity 0.6s ease, color 0.3s ease;
+        }
+
+        .nav__mobile.open a {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .nav__mobile.open a:nth-child(1) { transition-delay: 0.1s; }
+        .nav__mobile.open a:nth-child(2) { transition-delay: 0.15s; }
+        .nav__mobile.open a:nth-child(3) { transition-delay: 0.2s; }
+        .nav__mobile.open a:nth-child(4) { transition-delay: 0.25s; }
+        .nav__mobile.open a:nth-child(5) { transition-delay: 0.3s; }
+
+        .nav__mobile a:hover { color: var(--gold); }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(100px, 12vh, 160px) clamp(32px, 5vw, 80px) clamp(60px, 8vh, 100px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero__label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .hero__label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(42px, 5.5vw, 88px);
+            font-weight: 400;
+            line-height: 1.05;
+            color: var(--white);
+            margin-bottom: 28px;
+            letter-spacing: -1px;
+        }
+
+        .hero__title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero__subtitle {
+            font-size: clamp(15px, 1.1vw, 18px);
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 440px;
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+
+        .hero__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--black);
+            background: var(--gold);
+            padding: 18px 36px;
+            transition: all 0.4s var(--ease-out);
+            align-self: flex-start;
+        }
+
+        .hero__cta svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.4s var(--ease-out);
+        }
+
+        .hero__cta:hover {
+            background: var(--white);
+            gap: 24px;
+        }
+
+        .hero__cta:hover svg { transform: translateX(4px); }
+
+        .hero__image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero__image img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.1);
+            transition: transform 8s ease;
+        }
+
+        .hero__image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, var(--black) 0%, transparent 30%),
+                        linear-gradient(to top, rgba(10,10,10,0.4) 0%, transparent 40%);
+            z-index: 1;
+        }
+
+        .hero__scroll {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            z-index: 3;
+        }
+
+        .hero__scroll span {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            writing-mode: vertical-rl;
+        }
+
+        .hero__scroll-line {
+            width: 1px;
+            height: 48px;
+            background: var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero__scroll-line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollLine {
+            0% { top: -100%; }
+            50% { top: 100%; }
+            100% { top: 100%; }
+        }
+
+        /* ============================================
+           STATS BAR
+           ============================================ */
+        .stats {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 48px clamp(24px, 4vw, 64px);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 16px 24px;
+            position: relative;
+        }
+
+        .stat:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 48px;
+            background: var(--border);
+        }
+
+        .stat__number {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 3.5vw, 52px);
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat__label {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           ABOUT
+           ============================================ */
+        .about {
+            padding: clamp(80px, 10vw, 160px) clamp(24px, 4vw, 64px);
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: clamp(40px, 5vw, 100px);
+            align-items: center;
+        }
+
+        .about__image {
+            position: relative;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+        }
+
+        .about__image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--gold);
+            opacity: 0.3;
+            z-index: -1;
+            transition: all 0.6s var(--ease-out);
+        }
+
+        .about__image:hover::before {
+            top: -12px;
+            left: -12px;
+        }
+
+        .about__image img {
+            transition: transform 0.8s var(--ease-out);
+        }
+
+        .about__image:hover img {
+            transform: scale(1.04);
+        }
+
+        .about__content {
+            max-width: 520px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 3.5vw, 52px);
+            font-weight: 400;
+            line-height: 1.15;
+            color: var(--white);
+            margin-bottom: 28px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .about__text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            font-weight: 300;
+            margin-bottom: 24px;
+        }
+
+        .about__divider {
+            width: 60px;
+            height: 1px;
+            background: var(--border-light);
+            margin: 32px 0;
+        }
+
+        .about__highlight {
+            display: flex;
+            gap: 24px;
+        }
+
+        .about__highlight-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .about__highlight-num {
+            font-family: var(--font-display);
+            font-size: 36px;
+            color: var(--gold);
+        }
+
+        .about__highlight-label {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           MATERIALS
+           ============================================ */
+        .materials {
+            padding: clamp(80px, 10vw, 140px) clamp(24px, 4vw, 64px);
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .materials__header {
+            text-align: center;
+            margin-bottom: clamp(48px, 5vw, 80px);
+        }
+
+        .materials__header .section-label {
+            justify-content: center;
+        }
+
+        .materials__header .section-label::before { display: none; }
+
+        .materials__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .material-card {
+            background: var(--black-light);
+            padding: clamp(32px, 3vw, 56px);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.5s ease;
+            border: 1px solid transparent;
+        }
+
+        .material-card:hover {
+            background: var(--surface-hover);
+            border-color: var(--border);
+        }
+
+        .material-card__icon {
+            width: 56px;
+            height: 56px;
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            transition: border-color 0.4s ease;
+        }
+
+        .material-card:hover .material-card__icon {
+            border-color: var(--gold);
+        }
+
+        .material-card__icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--gold);
+        }
+
+        .material-card__title {
+            font-family: var(--font-display);
+            font-size: clamp(24px, 2vw, 32px);
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .material-card__text {
+            font-size: 14px;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .material-card__line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.6s var(--ease-out);
+        }
+
+        .material-card:hover .material-card__line {
+            width: 100%;
+        }
+
+        /* ============================================
+           COLLECTION / PRODUCTS
+           ============================================ */
+        .collection {
+            padding: clamp(80px, 10vw, 140px) clamp(24px, 4vw, 64px);
+        }
+
+        .collection__header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: clamp(40px, 4vw, 64px);
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .collection__filters {
+            display: flex;
+            gap: 4px;
+        }
+
+        .filter-btn {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            padding: 12px 24px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .filter-btn:hover {
+            color: var(--text-primary);
+            border-color: var(--border-light);
+        }
+
+        .filter-btn.active {
+            color: var(--black);
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .collection__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2px;
+        }
+
+        .product-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color 0.4s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            border-color: var(--border-light);
+        }
+
+        .product-card.hidden {
+            display: none;
+        }
+
+        .product-card__image {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-card__image img {
+            transition: transform 0.8s var(--ease-out);
+        }
+
+        .product-card:hover .product-card__image img {
+            transform: scale(1.06);
+        }
+
+        .product-card__badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            background: var(--gold);
+            color: var(--black);
+            z-index: 2;
+        }
+
+        .product-card__overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 10, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .product-card:hover .product-card__overlay {
+            opacity: 1;
+        }
+
+        .product-card__overlay span {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--white);
+            padding: 12px 24px;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .product-card__overlay span {
+            border-color: var(--white);
+        }
+
+        .product-card__info {
+            padding: 20px 24px;
+        }
+
+        .product-card__material {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .product-card__name {
+            font-family: var(--font-display);
+            font-size: 22px;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .product-card__bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .product-card__price {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .product-card__price small {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .product-card__dims {
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        /* Empty state */
+        .collection__empty {
+            display: none;
+            text-align: center;
+            padding: 80px 24px;
+            grid-column: 1 / -1;
+        }
+
+        .collection__empty.visible {
+            display: block;
+        }
+
+        .collection__empty p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* ============================================
+           MODAL
+           ============================================ */
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal__backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal__content {
+            position: relative;
+            z-index: 1;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 960px;
+            width: 90%;
+            max-height: 85vh;
+            overflow: hidden;
+            transform: translateY(24px) scale(0.97);
+            transition: transform 0.5s var(--ease-out);
+        }
+
+        .modal.open .modal__content {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal__image {
+            aspect-ratio: 1;
+            overflow: hidden;
+            max-height: 85vh;
+        }
+
+        .modal__details {
+            padding: clamp(32px, 3vw, 48px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .modal__close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .modal__close:hover { color: var(--white); }
+
+        .modal__material {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .modal__name {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 2.5vw, 40px);
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .modal__desc {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            font-weight: 300;
+            margin-bottom: 28px;
+        }
+
+        .modal__specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .modal__spec {
+            padding: 16px;
+            background: var(--black-light);
+            border: 1px solid var(--border);
+        }
+
+        .modal__spec-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .modal__spec-value {
+            font-size: 15px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .modal__price {
+            font-family: var(--font-display);
+            font-size: 36px;
+            color: var(--gold);
+            margin-bottom: 28px;
+        }
+
+        .modal__price small {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .modal__cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--black);
+            background: var(--gold);
+            padding: 18px 36px;
+            transition: background 0.3s ease;
+            width: 100%;
+        }
+
+        .modal__cta:hover { background: var(--white); }
+
+        /* ============================================
+           BENEFITS
+           ============================================ */
+        .benefits {
+            padding: clamp(80px, 10vw, 140px) clamp(24px, 4vw, 64px);
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .benefits__header {
+            text-align: center;
+            margin-bottom: clamp(48px, 5vw, 80px);
+        }
+
+        .benefits__header .section-label {
+            justify-content: center;
+        }
+
+        .benefits__header .section-label::before { display: none; }
+
+        .benefits__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+        }
+
+        .benefit {
+            background: var(--black-light);
+            padding: clamp(32px, 3vw, 48px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.5s ease;
+        }
+
+        .benefit:hover {
+            background: var(--surface-hover);
+        }
+
+        .benefit__icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            border: 1px solid var(--border-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: border-color 0.4s ease;
+        }
+
+        .benefit:hover .benefit__icon {
+            border-color: var(--gold);
+        }
+
+        .benefit__icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--gold);
+        }
+
+        .benefit__title {
+            font-family: var(--font-display);
+            font-size: 22px;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .benefit__text {
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* ============================================
+           CTA
+           ============================================ */
+        .cta {
+            padding: clamp(100px, 12vw, 180px) clamp(24px, 4vw, 64px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta .section-label {
+            justify-content: center;
+        }
+
+        .cta .section-label::before { display: none; }
+
+        .cta .section-title {
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .cta__subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 300;
+            margin-bottom: 48px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .cta__button {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--black);
+            background: var(--gold);
+            padding: 20px 48px;
+            transition: all 0.4s var(--ease-out);
+        }
+
+        .cta__button:hover {
+            background: var(--white);
+            gap: 24px;
+        }
+
+        .cta__button svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.4s var(--ease-out);
+        }
+
+        .cta__button:hover svg { transform: translateX(4px); }
+
+        .cta__email {
+            display: block;
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 48px clamp(24px, 4vw, 64px);
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer__logo {
+            font-family: var(--font-display);
+            font-size: 22px;
+            color: var(--white);
+        }
+
+        .footer__logo span {
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .footer__links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .footer__links a {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .footer__links a:hover { color: var(--gold); }
+
+        .footer__copy {
+            font-size: 12px;
+            color: var(--text-muted);
+            width: 100%;
+            text-align: center;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+        }
+
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.94);
+            transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+        }
+
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-1 { transition-delay: 0.05s !important; }
+        .stagger-2 { transition-delay: 0.1s !important; }
+        .stagger-3 { transition-delay: 0.15s !important; }
+        .stagger-4 { transition-delay: 0.2s !important; }
+        .stagger-5 { transition-delay: 0.25s !important; }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .hero__content {
+                padding: 140px 32px 60px;
+                order: 2;
+            }
+
+            .hero__image {
+                order: 1;
+                height: 50vh;
+                min-height: 300px;
+            }
+
+            .hero__image img { position: relative; height: 100%; }
+
+            .hero__image::after {
+                background: linear-gradient(to top, var(--black) 5%, transparent 50%);
+            }
+
+            .hero__scroll { display: none; }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat:nth-child(2)::after { display: none; }
+
+            .stat { padding: 20px 16px; }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about__image {
+                aspect-ratio: 16/9;
+                max-height: 400px;
+            }
+
+            .materials__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .collection__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .benefits__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .modal__content {
+                grid-template-columns: 1fr;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            .modal__image {
+                aspect-ratio: 16/10;
+                max-height: 40vh;
+            }
+
+            .nav__links { display: none; }
+            .nav__hamburger { display: flex; }
+        }
+
+        @media (max-width: 680px) {
+            .hero__content {
+                padding: 120px 20px 48px;
+            }
+
+            .hero__image { height: 40vh; }
+
+            .hero__cta {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+                padding: 32px 20px;
+            }
+
+            .stat::after { display: none !important; }
+
+            .collection__header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .collection__filters {
+                flex-wrap: wrap;
+                width: 100%;
+            }
+
+            .filter-btn {
+                flex: 1;
+                text-align: center;
+                padding: 10px 12px;
+                font-size: 11px;
+            }
+
+            .collection__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal__content {
+                width: 100%;
+                max-height: 100vh;
+                height: 100vh;
+            }
+
+            .modal__image {
+                max-height: 35vh;
+            }
+
+            .modal__specs {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer__links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav__logo">Ada <span>Paneli</span></a>
+        <ul class="nav__links">
+            <li><a href="#o-nama">O nama</a></li>
+            <li><a href="#materijali">Materijali</a></li>
+            <li><a href="#kolekcija">Kolekcija</a></li>
+            <li><a href="#prednosti">Prednosti</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+        <div class="nav__hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="nav__mobile" id="mobileMenu">
+        <a href="#o-nama">O nama</a>
+        <a href="#materijali">Materijali</a>
+        <a href="#kolekcija">Kolekcija</a>
+        <a href="#prednosti">Prednosti</a>
+        <a href="#kontakt">Kontakt</a>
+    </div>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
+        <div class="hero__content">
+            <div class="hero__label">Premium zidne obloge</div>
+            <h1 class="hero__title">Transformišite<br>Vaš <em>Prostor</em></h1>
+            <p class="hero__subtitle">Uvozimo i distribuiramo ekskluzivne bambusove, MDF i PVC panele koji transformišu svaki enterijer u arhitektonsko remek-delo.</p>
+            <a href="#kolekcija" class="hero__cta">
+                Pogledajte kolekciju
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+        <div class="hero__image">
+            <img src="imgs/C56E446A-78CE-41D5-8246-AA7588502680.JPG" alt="Ada Paneli - Premium zidne obloge" id="heroImg">
+        </div>
+        <div class="hero__scroll">
+            <span>Scroll</span>
+            <div class="hero__scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ==================== STATS ==================== -->
+    <section class="stats">
+        <div class="stat reveal stagger-1">
+            <div class="stat__number">10+</div>
+            <div class="stat__label">Proizvoda</div>
+        </div>
+        <div class="stat reveal stagger-2">
+            <div class="stat__number">3</div>
+            <div class="stat__label">Tipa Materijala</div>
+        </div>
+        <div class="stat reveal stagger-3">
+            <div class="stat__number">2440</div>
+            <div class="stat__label">mm Maks. Dužina</div>
+        </div>
+        <div class="stat reveal stagger-4">
+            <div class="stat__number">1</div>
+            <div class="stat__label">Dan Ugradnje</div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section class="about" id="o-nama">
+        <div class="about__image reveal-left">
+            <img src="imgs/A64FB760-D8B8-4980-9B3A-1EA0D411CE21.JPG" alt="Ada Paneli enterijer">
+        </div>
+        <div class="about__content reveal-right">
+            <div class="section-label">O nama</div>
+            <h2 class="section-title">Prostor koji<br>priča <em>priču</em></h2>
+            <p class="about__text">Ada Paneli je specijalizovani uvoznik premium zidnih obloga. Naša kolekcija obuhvata pažljivo odabrane bambusove lamele, MDF panele sa prirodnim teksturama drveta, kao i elegantne PVC obloge sa efektom mermera i kamena.</p>
+            <p class="about__text">Svaki proizvod prolazi rigoroznu kontrolu kvaliteta kako bi ispunio najviše standarde modernog enterijera.</p>
+            <div class="about__divider"></div>
+            <div class="about__highlight">
+                <div class="about__highlight-item">
+                    <div class="about__highlight-num">100%</div>
+                    <div class="about__highlight-label">Kontrola kvaliteta</div>
+                </div>
+                <div class="about__highlight-item">
+                    <div class="about__highlight-num">3</div>
+                    <div class="about__highlight-label">Kategorije materijala</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MATERIALS ==================== -->
+    <section class="materials" id="materijali">
+        <div class="materials__header">
+            <div class="section-label">Materijali</div>
+            <h2 class="section-title reveal">Tri sveta, jedna <em>vizija</em></h2>
+        </div>
+        <div class="materials__grid">
+            <div class="material-card reveal stagger-1">
+                <div class="material-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.5 0 3-.3 4.3-.9"/>
+                        <path d="M12 2c2.2 0 4 4.5 4 10s-1.8 10-4 10"/>
+                        <path d="M2 12h20"/>
+                        <path d="M17 3.5l4 4M21 3.5l-4 4"/>
+                    </svg>
+                </div>
+                <h3 class="material-card__title">Bambus</h3>
+                <p class="material-card__text">Prirodan, obnovljiv materijal brzo rastućeg porekla. Tri puta jači od tvrdog drveta, sa autentičnom teksturom koja unosi toplinu prirode u svaki prostor.</p>
+                <div class="material-card__line"></div>
+            </div>
+            <div class="material-card reveal stagger-2">
+                <div class="material-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="1"/>
+                        <path d="M3 9h18M3 15h18"/>
+                        <path d="M9 3v18M15 3v18"/>
+                    </svg>
+                </div>
+                <h3 class="material-card__title">MDF</h3>
+                <p class="material-card__text">Inženjersko drvo sa prirodnim teksturama vrhunske preciznosti. Otporan na vlagu, stabilan i sa savršenom površinom za svaki dizajnerski zahtev.</p>
+                <div class="material-card__line"></div>
+            </div>
+            <div class="material-card reveal stagger-3">
+                <div class="material-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M2 12C2 7 7 2 12 2s10 5 10 10-5 10-10 10S2 17 2 12z"/>
+                        <path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4"/>
+                        <path d="M12 8V2M16 12h6"/>
+                    </svg>
+                </div>
+                <h3 class="material-card__title">PVC</h3>
+                <p class="material-card__text">Izdržljive obloge sa efektom mermera i kamena, italijanskog dizajna. Vodootporne, jednostavne za održavanje i vizuelno nerazlučive od prirodnog kamena.</p>
+                <div class="material-card__line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COLLECTION ==================== -->
+    <section class="collection" id="kolekcija">
+        <div class="collection__header">
+            <div>
+                <div class="section-label">Kolekcija</div>
+                <h2 class="section-title">Naši <em>proizvodi</em></h2>
+            </div>
+            <div class="collection__filters">
+                <button class="filter-btn active" data-filter="all">Sve</button>
+                <button class="filter-btn" data-filter="wood">Prirodno Drvo</button>
+                <button class="filter-btn" data-filter="stone">Kamen & Mermer</button>
+            </div>
+        </div>
+
+        <div class="collection__grid" id="productGrid">
+
+            <!-- Product 1: Svetli Bambus -->
+            <div class="product-card reveal stagger-1" data-category="wood"
+                 data-name="Svetli Bambus" data-material="Bambus" data-price="3.490"
+                 data-desc="Bambusove lamele zaobljenog profila sa toplom, prirodnom teksturom. Idealne za dnevne sobe i spavaće sobe."
+                 data-dim="2440 × 155 mm" data-thickness="12 mm" data-finish="Matt" data-origin="Bambus, Azija"
+                 data-img="imgs/3E8092A0-3FCA-44D4-8FD8-CC322B7827CB.JPG">
+                <div class="product-card__image">
+                    <img src="imgs/3E8092A0-3FCA-44D4-8FD8-CC322B7827CB.JPG" alt="Svetli Bambus" loading="lazy">
+                    <span class="product-card__badge">Popularno</span>
+                    <div class="product-card__overlay"><span>Detaljnije</span></div>
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__material">Bambus</div>
+                    <div class="product-card__name">Svetli Bambus</div>
+                    <div class="product-card__bottom">
+                        <div class="product-card__price">3.490 <small>RSD/m²</small></div>
+                        <div class="product-card__dims">2440 × 155 mm</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2: Topli Hrast -->
+            <div class="product-card reveal stagger-2" data-category="wood"
+                 data-name="Topli Hrast" data-material="MDF" data-price="3.890"
+                 data-desc="MDF paneli zaobljenog profila sa bogatom teksturom hrasta. Savršeni za poslovne i stambene prostore."
+                 data-dim="2440 × 155 mm" data-thickness="12 mm" data-finish="Polu-matt" data-origin="MDF, Evropa"
+                 data-img="imgs/50725B9E-7C82-4D52-9D01-FBC4F87A65F4.JPG">
+                <div class="product-card__image">
+                    <img src="imgs/50725B9E-7C82-4D52-9D01-FBC4F87A65F4.JPG" alt="Topli Hrast" loading="lazy">
+                    <div class="product-card__overlay"><span>Detaljnije</span></div>
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__material">MDF</div>
+                    <div class="product-card__name">Topli Hrast</div>
+                    <div class="product-card__bottom">
+                        <div class="product-card__price">3.890 <small>RSD/m²</small></div>
+                        <div class="product-card__dims">2440 × 155 mm</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3: Nordijski Beli -->
+            <div class="product-card reveal stagger-3" data-category="wood"
+                 data-name="Nordijski Beli" data-material="MDF" data-price="3.890"
+                 data-desc="MDF lamele V-profila u čistoj beloj boji. Skandinavski minimalizam za moderne enterijere."
+                 data-dim="2440 × 155 mm" data-thickness="12 mm" data-finish="Matt" data-origin="MDF, Evropa"
+                 data-img="imgs/89B20EB0-F13E-418D-A94D-56366511B14C.JPG">
+                <div class="product-card__image">
+                    <img src="imgs/89B20EB0-F13E-418D-A94D-56366511B14C.JPG" alt="Nordijski Beli" loading="lazy">
+                    <span class="product-card__badge">Novo</span>
+                    <div class="product-card__overlay"><span>Detaljnije</span></div>
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__material">MDF</div>
+                    <div class="product-card__name">Nordijski Beli</div>
+                    <div class="product-card__bottom">
+                        <div class="product-card__price">3.890 <small>RSD/m²</small></div>
+                        <div class="product-card__dims">2440 × 155 mm</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4: Krem Bambus -->
+            <div class="product-card reveal stagger-4" data-category="wood"
+                 data-name="Krem Bambus" data-material="Bambus" data-price="3.490"
+                 data-desc="Bambusove lamele zaobljenog profila u krem nijansi. Meka, neutralna estetika za svestrane dizajnerske primene."
+                 data-dim="2440 × 155 mm" data-thickness="12 mm" data-finish="Matt" data-origin="Bambus, Azija"
+                 data-img="imgs/95D41066-A2AF-4A1C-B2DD-43C6B759812E.JPG">
+                <div class="product-card__image">
+                    <img src="imgs/95D41066-A2AF-4A1C-B2DD-43C6B759812E.JPG" alt="Krem Bambus" loading="lazy">
+                    <div class="product-card__overlay"><span>Detaljnije</span></div>
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__material">Bambus</div>
+                    <div class="product-card__name">Krem Bambus</div>
+                    <div class="product-card__bottom">
+                        <div class="product-card__price">3.490 <small>RSD/m²</small></div>
+                        <div class="product-card__dims">2440 × 155 mm</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5: Beljeni Hrast -->
+            <div class="product-card reveal stagger-5" data-category="wood"
+                 data-name="Beljeni Hrast" data-material="MDF" data-price="4.190"
+                 data-desc="MDF paneli zaobljenog profila sa prefinjenom teksturom beljenog hrasta. Premium završna obrada."
+                 data-dim="2440 × 155 mm" data-thickness="12 mm" data-finish="Polu-matt" data-origin="MDF, Evropa"
+                 data-img="imgs/FABD4E63-838A-40C4-8740-A7F0DF0E9445.JPG">
+                <div class="product-card__image">
+                    <img src="imgs/FABD4E63-838A-40C4-8740-A7F0DF0E9445.JPG" alt="Beljeni Hrast" loading="lazy">
+                    <div class="product-card__overlay"><span>Detaljnije</span></div>
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__material">MDF</div>
+                    <div class="product-card__name">Beljeni Hrast</div>
+                    <div class="product-card__bottom">
+                        <div class="product-card__price">4.190 <small>RSD/m²</small></div>
+                        <div class="product-card__dims">2440 × 155 mm</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6: Calacatta Bianco -->
+            <div class="product-card reveal stagger-1" data-category="stone"
+                 data-name="Calacatta Bianco" data-material="PVC" data-price="2.990"
+                 data-desc="PVC obloga sa efektom belog Calacatta mermera. Luksuzna završna obrada sjaja koja imitira prirodni kamen."
+                 data-dim="2440 × 610 mm" data-thickness="4 mm" data-finish="Sjaj" data-origin="PVC, Italijanski dizajn"
+                 data-img="imgs/433571BF-4B08-4CD2-98C1-DB5D700316EB.JPG">
+                <div class="product-card__image">
+                    <img src="imgs/433571BF-4B08-4CD2-98C1-DB5D700316EB.JPG" alt="Calacatta Bianco" loading="lazy">
+                    <span class="product-card__badge">Popularno</span>
+                    <div class="product-card__overlay"><span>Detaljnije</span></div>
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__material">PVC — Mermer</div>
+                    <div class="product-card__name">Calacatta Bianco</div>
+                    <div class="product-card__bottom">
+                        <div class="product-card__price">2.990 <small>RSD/m²</small></div>
+                        <div class="product-card__dims">2440 × 610 mm</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7: Calacatta Gold -->
+            <div class="product-card reveal stagger-2" data-category="stone"
+                 data-name="Calacatta Gold" data-material="PVC" data-price="3.290"
+                 data-desc="PVC obloga sa efektom Calacatta Gold mermera. Zlatne vene na beloj osnovi za izuzetno elegantan prostor."
+                 data-dim="2440 × 610 mm" data-thickness="4 mm" data-finish="Sjaj" data-origin="PVC, Italijanski dizajn"
+                 data-img="imgs/E1E9EA6A-08A0-4AD1-A6AA-1E7B6CBB4DDC.JPG">
+                <div class="product-card__image">
+                    <img src="imgs/E1E9EA6A-08A0-4AD1-A6AA-1E7B6CBB4DDC.JPG" alt="Calacatta Gold" loading="lazy">
+                    <span class="product-card__badge">Novo</span>
+                    <div class="product-card__overlay"><span>Detaljnije</span></div>
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__material">PVC — Mermer</div>
+                    <div class="product-card__name">Calacatta Gold</div>
+                    <div class="product-card__bottom">
+                        <div class="product-card__price">3.290 <small>RSD/m²</small></div>
+                        <div class="product-card__dims">2440 × 610 mm</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8: Dark Emperador -->
+            <div class="product-card reveal stagger-3" data-category="stone"
+                 data-name="Dark Emperador" data-material="PVC" data-price="3.190"
+                 data-desc="PVC obloga sa efektom tamnog Emperador kamena. Duboki braon tonovi za sofisticirane, dramatične enterijere."
+                 data-dim="2440 × 610 mm" data-thickness="4 mm" data-finish="Polu-sjaj" data-origin="PVC, Italijanski dizajn"
+                 data-img="imgs/02E892BD-16E0-4AD9-9F06-BCCD1AF4EDA2.JPG">
+                <div class="product-card__image">
+                    <img src="imgs/02E892BD-16E0-4AD9-9F06-BCCD1AF4EDA2.JPG" alt="Dark Emperador" loading="lazy">
+                    <div class="product-card__overlay"><span>Detaljnije</span></div>
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__material">PVC — Kamen</div>
+                    <div class="product-card__name">Dark Emperador</div>
+                    <div class="product-card__bottom">
+                        <div class="product-card__price">3.190 <small>RSD/m²</small></div>
+                        <div class="product-card__dims">2440 × 610 mm</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 9: Nero Marquina -->
+            <div class="product-card reveal stagger-4" data-category="stone"
+                 data-name="Nero Marquina" data-material="PVC" data-price="3.490"
+                 data-desc="PVC obloga sa efektom crnog Nero Marquina mermera. Dramatične bele vene na dubokoj crnoj pozadini."
+                 data-dim="2440 × 610 mm" data-thickness="4 mm" data-finish="Sjaj" data-origin="PVC, Italijanski dizajn"
+                 data-img="imgs/A64FB760-D8B8-4980-9B3A-1EA0D411CE21.JPG">
+                <div class="product-card__image">
+                    <img src="imgs/A64FB760-D8B8-4980-9B3A-1EA0D411CE21.JPG" alt="Nero Marquina" loading="lazy">
+                    <div class="product-card__overlay"><span>Detaljnije</span></div>
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__material">PVC — Mermer</div>
+                    <div class="product-card__name">Nero Marquina</div>
+                    <div class="product-card__bottom">
+                        <div class="product-card__price">3.490 <small>RSD/m²</small></div>
+                        <div class="product-card__dims">2440 × 610 mm</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 10: Verde Guatemala -->
+            <div class="product-card reveal stagger-5" data-category="stone"
+                 data-name="Verde Guatemala" data-material="PVC" data-price="3.690"
+                 data-desc="PVC obloga sa efektom zelenog Guatemala mermera. Jedinstvene zelene nijanse za prostorije sa karakterom."
+                 data-dim="2440 × 610 mm" data-thickness="4 mm" data-finish="Sjaj" data-origin="PVC, Italijanski dizajn"
+                 data-img="imgs/C9452514-338E-4BB2-BD67-522D0E07C14D.JPG">
+                <div class="product-card__image">
+                    <img src="imgs/C9452514-338E-4BB2-BD67-522D0E07C14D.JPG" alt="Verde Guatemala" loading="lazy">
+                    <span class="product-card__badge">Novo</span>
+                    <div class="product-card__overlay"><span>Detaljnije</span></div>
+                </div>
+                <div class="product-card__info">
+                    <div class="product-card__material">PVC — Mermer</div>
+                    <div class="product-card__name">Verde Guatemala</div>
+                    <div class="product-card__bottom">
+                        <div class="product-card__price">3.690 <small>RSD/m²</small></div>
+                        <div class="product-card__dims">2440 × 610 mm</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collection__empty" id="emptyState">
+                <p>Nema proizvoda u odabranoj kategoriji.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BENEFITS ==================== -->
+    <section class="benefits" id="prednosti">
+        <div class="benefits__header">
+            <div class="section-label">Prednosti</div>
+            <h2 class="section-title reveal">Zašto <em>Ada Paneli</em></h2>
+        </div>
+        <div class="benefits__grid">
+            <div class="benefit reveal stagger-1">
+                <div class="benefit__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                    </svg>
+                </div>
+                <h3 class="benefit__title">Laka Montaža</h3>
+                <p class="benefit__text">Inovativni "klik-klik" sistem omogućava brzu ugradnju bez specijalnog alata. Kompletna prostorija za samo jedan dan.</p>
+            </div>
+            <div class="benefit reveal stagger-2">
+                <div class="benefit__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                </div>
+                <h3 class="benefit__title">Premium Kvalitet</h3>
+                <p class="benefit__text">Svaki proizvod prolazi rigoroznu kontrolu kvaliteta. Samo najbolji materijali dolaze do Vaših zidova.</p>
+            </div>
+            <div class="benefit reveal stagger-3">
+                <div class="benefit__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                    </svg>
+                </div>
+                <h3 class="benefit__title">Besplatna Konsultacija</h3>
+                <p class="benefit__text">Naš tim stručnjaka je tu da Vam pomogne u odabiru idealnog rešenja za Vaš prostor. Potpuno besplatno.</p>
+            </div>
+            <div class="benefit reveal stagger-4">
+                <div class="benefit__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="1" y="3" width="15" height="13" rx="2"/>
+                        <path d="M16 8h4l3 3v5a2 2 0 01-2 2h-1"/>
+                        <circle cx="5.5" cy="18.5" r="2.5"/>
+                        <circle cx="18.5" cy="18.5" r="2.5"/>
+                    </svg>
+                </div>
+                <h3 class="benefit__title">Brza Isporuka</h3>
+                <p class="benefit__text">Efikasna logistika i stalna zaliha najpopularnijih modela obezbeđuju brzu isporuku na teritoriji cele Srbije.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="cta" id="kontakt">
+        <div class="section-label">Kontakt</div>
+        <h2 class="section-title reveal">Zakažite Besplatnu<br><em>Konsultaciju</em></h2>
+        <p class="cta__subtitle reveal">Pošaljite nam upit i naš tim će Vam odgovoriti u najkraćem roku sa profesionalnim savetima i uzorcima materijala.</p>
+        <a href="mailto:info@adapaneli.rs" class="cta__button reveal">
+            Kontaktirajte nas
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <span class="cta__email reveal">info@adapaneli.rs</span>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <a href="#" class="footer__logo">Ada <span>Paneli</span></a>
+        <ul class="footer__links">
+            <li><a href="#o-nama">O nama</a></li>
+            <li><a href="#kolekcija">Kolekcija</a></li>
+            <li><a href="#prednosti">Prednosti</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+        <div class="footer__copy">&copy; 2026 Ada Paneli. Sva prava zadržana.</div>
+    </footer>
+
+    <!-- ==================== MODAL ==================== -->
+    <div class="modal" id="modal">
+        <div class="modal__backdrop" id="modalBackdrop"></div>
+        <div class="modal__content">
+            <button class="modal__close" id="modalClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+            <div class="modal__image">
+                <img id="modalImg" src="" alt="">
+            </div>
+            <div class="modal__details">
+                <div class="modal__material" id="modalMaterial"></div>
+                <h3 class="modal__name" id="modalName"></h3>
+                <p class="modal__desc" id="modalDesc"></p>
+                <div class="modal__specs">
+                    <div class="modal__spec">
+                        <div class="modal__spec-label">Dimenzije</div>
+                        <div class="modal__spec-value" id="modalDim"></div>
+                    </div>
+                    <div class="modal__spec">
+                        <div class="modal__spec-label">Debljina</div>
+                        <div class="modal__spec-value" id="modalThick"></div>
+                    </div>
+                    <div class="modal__spec">
+                        <div class="modal__spec-label">Završna obrada</div>
+                        <div class="modal__spec-value" id="modalFinish"></div>
+                    </div>
+                    <div class="modal__spec">
+                        <div class="modal__spec-label">Poreklo</div>
+                        <div class="modal__spec-value" id="modalOrigin"></div>
+                    </div>
+                </div>
+                <div class="modal__price" id="modalPrice"></div>
+                <a href="mailto:info@adapaneli.rs" class="modal__cta">Zatražite uzorak</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+    (function() {
+        'use strict';
+
+        /* === Navigation scroll === */
+        const nav = document.getElementById('nav');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 60) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        }, { passive: true });
+
+        /* === Mobile menu === */
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* === Scroll reveal animations === */
+        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+        const revealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        reveals.forEach(function(el) {
+            revealObserver.observe(el);
+        });
+
+        /* === Hero parallax === */
+        const heroImg = document.getElementById('heroImg');
+        if (heroImg) {
+            window.addEventListener('scroll', function() {
+                var scroll = window.scrollY;
+                if (scroll < window.innerHeight) {
+                    heroImg.style.transform = 'scale(1.1) translateY(' + (scroll * 0.15) + 'px)';
+                }
+            }, { passive: true });
+        }
+
+        /* === Product filters === */
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+        const emptyState = document.getElementById('emptyState');
+
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+
+                var filter = btn.getAttribute('data-filter');
+                var visibleCount = 0;
+
+                productCards.forEach(function(card) {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.classList.remove('hidden');
+                        visibleCount++;
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                if (visibleCount === 0) {
+                    emptyState.classList.add('visible');
+                } else {
+                    emptyState.classList.remove('visible');
+                }
+            });
+        });
+
+        /* === Modal === */
+        const modal = document.getElementById('modal');
+        const modalBackdrop = document.getElementById('modalBackdrop');
+        const modalClose = document.getElementById('modalClose');
+
+        function openModal(card) {
+            document.getElementById('modalImg').src = card.getAttribute('data-img');
+            document.getElementById('modalImg').alt = card.getAttribute('data-name');
+            document.getElementById('modalMaterial').textContent = card.getAttribute('data-material');
+            document.getElementById('modalName').textContent = card.getAttribute('data-name');
+            document.getElementById('modalDesc').textContent = card.getAttribute('data-desc');
+            document.getElementById('modalDim').textContent = card.getAttribute('data-dim');
+            document.getElementById('modalThick').textContent = card.getAttribute('data-thickness');
+            document.getElementById('modalFinish').textContent = card.getAttribute('data-finish');
+            document.getElementById('modalOrigin').textContent = card.getAttribute('data-origin');
+            document.getElementById('modalPrice').innerHTML = card.getAttribute('data-price') + ' <small>RSD/m²</small>';
+
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        productCards.forEach(function(card) {
+            card.addEventListener('click', function() {
+                openModal(card);
+            });
+        });
+
+        modalBackdrop.addEventListener('click', closeModal);
+        modalClose.addEventListener('click', closeModal);
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        /* === Smooth scroll for nav links === */
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    var offset = 80;
+                    var top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        /* === Force scroll to top on load === */
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+
+    })();
+    </script>
+</body>
+</html>
