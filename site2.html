@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ada Paneli — Premium Zidne Obloge</title>
-    <meta name="description" content="Ada Paneli - Specijalizovani uvoznik premium zidnih obloga. Bambusove, MDF i PVC panele koji transformišu svaki enterijer.">
+    <title>Terra Walls — Premium Zidne Obloge</title>
+    <meta name="description" content="Terra Walls - Specijalizovani uvoznik premium zidnih obloga. MDF panele, flexi panele i zidne obloge koji transformišu svaki enterijer.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,15 +17,15 @@
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
         :root {
-            --black: #0A0A0A;
-            --black-light: #111111;
-            --surface: #161616;
-            --surface-hover: #1E1E1E;
-            --border: #2A2A2A;
-            --border-light: #333333;
-            --text-primary: #E8E4DE;
-            --text-secondary: #9A9590;
-            --text-muted: #5C5955;
+            --black: #2A2A2A;
+            --black-light: #303030;
+            --surface: #363636;
+            --surface-hover: #3E3E3E;
+            --border: #4A4A4A;
+            --border-light: #585858;
+            --text-primary: #F0ECE6;
+            --text-secondary: #B0AAA4;
+            --text-muted: #8A8580;
             --gold: #C9A96E;
             --gold-dim: rgba(201,169,110,0.15);
             --gold-glow: rgba(201,169,110,0.08);
@@ -62,7 +62,7 @@
             width: 100%; height: 100%;
             pointer-events: none;
             z-index: 9999;
-            opacity: 0.035;
+            opacity: 0.02;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
             background-repeat: repeat;
             background-size: 200px 200px;
@@ -92,11 +92,11 @@
             justify-content: space-between;
             transition: background 0.5s ease, border-color 0.5s ease, backdrop-filter 0.5s ease;
             border-bottom: 1px solid transparent;
-            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.6) 60%, transparent 100%);
+            background: linear-gradient(to bottom, rgba(42, 42, 42, 0.9) 0%, rgba(42, 42, 42, 0.6) 60%, transparent 100%);
         }
 
         .nav.scrolled {
-            background: rgba(10, 10, 10, 0.92);
+            background: rgba(42, 42, 42, 0.92);
             backdrop-filter: blur(20px) saturate(1.2);
             -webkit-backdrop-filter: blur(20px) saturate(1.2);
             border-bottom-color: var(--border);
@@ -238,6 +238,7 @@
             padding: clamp(100px, 12vh, 160px) clamp(32px, 5vw, 80px) clamp(60px, 8vh, 100px);
             position: relative;
             z-index: 2;
+            background: #1A1A1A;
         }
 
         .hero__label {
@@ -330,8 +331,8 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to right, var(--black) 0%, transparent 30%),
-                        linear-gradient(to top, rgba(10,10,10,0.4) 0%, transparent 40%);
+            background: linear-gradient(to right, #1A1A1A 0%, rgba(26,26,26,0.85) 20%, transparent 45%),
+                        linear-gradient(to top, rgba(26,26,26,0.5) 0%, transparent 40%);
             z-index: 1;
         }
 
@@ -787,22 +788,122 @@
             justify-content: space-between;
         }
 
-        .product-card__price {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-primary);
+        .product-card__inquiry {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 8px 18px;
+            background: var(--gold);
+            color: var(--black);
+            transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
-        .product-card__price small {
-            font-size: 12px;
-            font-weight: 400;
-            color: var(--text-muted);
+        .product-card__inquiry:hover {
+            background: var(--white);
+            transform: translateY(-1px);
         }
 
         .product-card__dims {
             font-size: 11px;
             color: var(--text-muted);
             letter-spacing: 0.5px;
+        }
+
+        /* Flexi Showcase */
+        .flexi-showcase {
+            padding: clamp(100px, 12vw, 180px) clamp(24px, 4vw, 64px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .flexi-showcase__layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(40px, 5vw, 80px);
+            align-items: start;
+        }
+
+        .flexi-showcase__image {
+            position: sticky;
+            top: 100px;
+            overflow: hidden;
+        }
+
+        .flexi-showcase__image img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            transition: transform 0.8s var(--ease-out);
+        }
+
+        .flexi-showcase__image:hover img {
+            transform: scale(1.03);
+        }
+
+        .flexi-showcase__title {
+            font-family: var(--font-display);
+            font-size: clamp(48px, 6vw, 80px);
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 28px;
+        }
+
+        .flexi-showcase__desc {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        .flexi-showcase__specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-bottom: 48px;
+        }
+
+        .flexi-showcase__spec {
+            padding: 16px 0;
+            border-top: 1px solid var(--border);
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .flexi-showcase__spec strong {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .flexi-showcase__heading {
+            font-family: var(--font-display);
+            font-size: 28px;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .flexi-showcase__list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px 0;
+        }
+
+        .flexi-showcase__list li {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-primary);
+            padding: 8px 0;
+        }
+
+        @media (max-width: 900px) {
+            .flexi-showcase__layout { grid-template-columns: 1fr; }
+            .flexi-showcase__image { position: relative; top: 0; }
+            .flexi-showcase__specs { grid-template-columns: 1fr; }
         }
 
         /* Empty state */
@@ -1391,7 +1492,7 @@
 
     <!-- ==================== NAVIGATION ==================== -->
     <nav class="nav" id="nav">
-        <a href="#" class="nav__logo">Ada <span>Paneli</span></a>
+        <a href="#" class="nav__logo">Terra <span>Walls</span></a>
         <ul class="nav__links">
             <li><a href="#o-nama">O nama</a></li>
             <li><a href="#materijali">Materijali</a></li>
@@ -1427,7 +1528,7 @@
             </a>
         </div>
         <div class="hero__image">
-            <img src="imgs/C56E446A-78CE-41D5-8246-AA7588502680.JPG" alt="Ada Paneli - Premium zidne obloge" id="heroImg">
+            <img src="imgs/C56E446A-78CE-41D5-8246-AA7588502680.JPG" alt="Terra Walls - Premium zidne obloge" id="heroImg">
         </div>
         <div class="hero__scroll">
             <span>Scroll</span>
@@ -1458,12 +1559,12 @@
     <!-- ==================== ABOUT ==================== -->
     <section class="about" id="o-nama">
         <div class="about__image reveal-left">
-            <img src="imgs/A64FB760-D8B8-4980-9B3A-1EA0D411CE21.JPG" alt="Ada Paneli enterijer">
+            <img src="imgs/A64FB760-D8B8-4980-9B3A-1EA0D411CE21.JPG" alt="Terra Walls enterijer">
         </div>
         <div class="about__content reveal-right">
             <div class="section-label">O nama</div>
             <h2 class="section-title">Prostor koji<br>priča <em>priču</em></h2>
-            <p class="about__text">Ada Paneli je specijalizovani uvoznik premium zidnih obloga. Naša kolekcija obuhvata pažljivo odabrane bambusove lamele, MDF panele sa prirodnim teksturama drveta, kao i elegantne PVC obloge sa efektom mermera i kamena.</p>
+            <p class="about__text">Terra Walls je specijalizovani uvoznik premium zidnih obloga. Naša kolekcija obuhvata pažljivo odabrane MDF panele sa prirodnim teksturama drveta, fleksibilne MDF panele za zakrivljene površine, kao i elegantne zidne obloge za moderne enterijere.</p>
             <p class="about__text">Svaki proizvod prolazi rigoroznu kontrolu kvaliteta kako bi ispunio najviše standarde modernog enterijera.</p>
             <div class="about__divider"></div>
             <div class="about__highlight">
@@ -1526,6 +1627,43 @@
         </div>
     </section>
 
+    <!-- ==================== FLEXI SHOWCASE ==================== -->
+    <section class="flexi-showcase" id="flexi">
+        <div class="flexi-showcase__layout">
+            <div class="flexi-showcase__image">
+                <img src="imgs/flexi paneli/Fleksibilni mdf.jpeg" alt="Flexi Panel" loading="lazy">
+            </div>
+            <div class="flexi-showcase__content">
+                <div class="section-label">Specijalna ponuda</div>
+                <h2 class="flexi-showcase__title">Flexi Paneli</h2>
+                <p class="flexi-showcase__desc">Posebna vrsta MDF ploča namenjena oblaganju zakrivljenih površina i kreativnim enterijerima. Tanji, elastičniji i može da se savija — idealan za dizajnerske projekte sa oblim formama.</p>
+
+                <div class="flexi-showcase__specs">
+                    <div class="flexi-showcase__spec"><strong>Materijal</strong> MDF ploča u fleksibilnoj varijanti</div>
+                    <div class="flexi-showcase__spec"><strong>Dimenzija</strong> 2800 × 600 × 12 mm</div>
+                    <div class="flexi-showcase__spec"><strong>Širina oblice</strong> 20 mm</div>
+                    <div class="flexi-showcase__spec"><strong>Primena</strong> Zidne obloge, zakrivljeni nameštaj, dekorativni elementi</div>
+                </div>
+
+                <h3 class="flexi-showcase__heading">Prednosti</h3>
+                <ul class="flexi-showcase__list">
+                    <li>Pogodan za ravne i zakrivljene površine</li>
+                    <li>Brza i jednostavna montaža</li>
+                    <li>Dugotrajnost — površina zaštićena furnirom nove generacije</li>
+                    <li>Lako održavanje i otpornost na habanje</li>
+                    <li>Estetski precizna fabrička izrada</li>
+                </ul>
+
+                <h3 class="flexi-showcase__heading">Gde se koristi</h3>
+                <ul class="flexi-showcase__list">
+                    <li>Stubovi, zakrivljeni zidovi, recepcije, barovi</li>
+                    <li>Stolovi, komode, police sa oblim ivicama</li>
+                    <li>Kreativni paneli u hotelima, restoranima, kancelarijama</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <!-- ==================== COLLECTION ==================== -->
     <section class="collection" id="kolekcija">
         <div class="collection__header">
@@ -1535,216 +1673,201 @@
             </div>
             <div class="collection__filters">
                 <button class="filter-btn active" data-filter="all">Sve</button>
-                <button class="filter-btn" data-filter="wood">Prirodno Drvo</button>
-                <button class="filter-btn" data-filter="stone">Kamen & Mermer</button>
+                <button class="filter-btn" data-filter="standard">Standardni Paneli</button>
+                <button class="filter-btn" data-filter="flexi">Flexi Paneli</button>
             </div>
         </div>
 
         <div class="collection__grid" id="productGrid">
 
-            <!-- Product 1: Svetli Bambus -->
-            <div class="product-card reveal stagger-1" data-category="wood"
-                 data-name="Svetli Bambus" data-material="Bambus" data-price="3.490"
-                 data-desc="Bambusove lamele zaobljenog profila sa toplom, prirodnom teksturom. Idealne za dnevne sobe i spavaće sobe."
-                 data-dim="2440 × 155 mm" data-thickness="12 mm" data-finish="Matt" data-origin="Bambus, Azija"
-                 data-img="imgs/3E8092A0-3FCA-44D4-8FD8-CC322B7827CB.JPG">
-                <div class="product-card__image">
-                    <img src="imgs/3E8092A0-3FCA-44D4-8FD8-CC322B7827CB.JPG" alt="Svetli Bambus" loading="lazy">
-                    <span class="product-card__badge">Popularno</span>
-                    <div class="product-card__overlay"><span>Detaljnije</span></div>
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__material">Bambus</div>
-                    <div class="product-card__name">Svetli Bambus</div>
-                    <div class="product-card__bottom">
-                        <div class="product-card__price">3.490 <small>RSD/m²</small></div>
-                        <div class="product-card__dims">2440 × 155 mm</div>
-                    </div>
-                </div>
+            <div class="product-card reveal stagger-1" data-category="standard" data-name="P016" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P016.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P016.JPG" alt="Panel P016" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P016</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P016</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P016" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
             </div>
 
-            <!-- Product 2: Topli Hrast -->
-            <div class="product-card reveal stagger-2" data-category="wood"
-                 data-name="Topli Hrast" data-material="MDF" data-price="3.890"
-                 data-desc="MDF paneli zaobljenog profila sa bogatom teksturom hrasta. Savršeni za poslovne i stambene prostore."
-                 data-dim="2440 × 155 mm" data-thickness="12 mm" data-finish="Polu-matt" data-origin="MDF, Evropa"
-                 data-img="imgs/50725B9E-7C82-4D52-9D01-FBC4F87A65F4.JPG">
-                <div class="product-card__image">
-                    <img src="imgs/50725B9E-7C82-4D52-9D01-FBC4F87A65F4.JPG" alt="Topli Hrast" loading="lazy">
-                    <div class="product-card__overlay"><span>Detaljnije</span></div>
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__material">MDF</div>
-                    <div class="product-card__name">Topli Hrast</div>
-                    <div class="product-card__bottom">
-                        <div class="product-card__price">3.890 <small>RSD/m²</small></div>
-                        <div class="product-card__dims">2440 × 155 mm</div>
-                    </div>
-                </div>
+            <div class="product-card reveal stagger-2" data-category="standard" data-name="P018" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P018.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P018.JPG" alt="Panel P018" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P018</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P018</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P018" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
             </div>
 
-            <!-- Product 3: Nordijski Beli -->
-            <div class="product-card reveal stagger-3" data-category="wood"
-                 data-name="Nordijski Beli" data-material="MDF" data-price="3.890"
-                 data-desc="MDF lamele V-profila u čistoj beloj boji. Skandinavski minimalizam za moderne enterijere."
-                 data-dim="2440 × 155 mm" data-thickness="12 mm" data-finish="Matt" data-origin="MDF, Evropa"
-                 data-img="imgs/89B20EB0-F13E-418D-A94D-56366511B14C.JPG">
-                <div class="product-card__image">
-                    <img src="imgs/89B20EB0-F13E-418D-A94D-56366511B14C.JPG" alt="Nordijski Beli" loading="lazy">
-                    <span class="product-card__badge">Novo</span>
-                    <div class="product-card__overlay"><span>Detaljnije</span></div>
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__material">MDF</div>
-                    <div class="product-card__name">Nordijski Beli</div>
-                    <div class="product-card__bottom">
-                        <div class="product-card__price">3.890 <small>RSD/m²</small></div>
-                        <div class="product-card__dims">2440 × 155 mm</div>
-                    </div>
-                </div>
+            <div class="product-card reveal stagger-3" data-category="standard" data-name="P020" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P020.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P020.JPG" alt="Panel P020" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P020</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P020</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P020" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
             </div>
 
-            <!-- Product 4: Krem Bambus -->
-            <div class="product-card reveal stagger-4" data-category="wood"
-                 data-name="Krem Bambus" data-material="Bambus" data-price="3.490"
-                 data-desc="Bambusove lamele zaobljenog profila u krem nijansi. Meka, neutralna estetika za svestrane dizajnerske primene."
-                 data-dim="2440 × 155 mm" data-thickness="12 mm" data-finish="Matt" data-origin="Bambus, Azija"
-                 data-img="imgs/95D41066-A2AF-4A1C-B2DD-43C6B759812E.JPG">
-                <div class="product-card__image">
-                    <img src="imgs/95D41066-A2AF-4A1C-B2DD-43C6B759812E.JPG" alt="Krem Bambus" loading="lazy">
-                    <div class="product-card__overlay"><span>Detaljnije</span></div>
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__material">Bambus</div>
-                    <div class="product-card__name">Krem Bambus</div>
-                    <div class="product-card__bottom">
-                        <div class="product-card__price">3.490 <small>RSD/m²</small></div>
-                        <div class="product-card__dims">2440 × 155 mm</div>
-                    </div>
-                </div>
+            <div class="product-card reveal stagger-4" data-category="standard" data-name="P022" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P022.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P022.JPG" alt="Panel P022" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P022</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P022</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P022" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
             </div>
 
-            <!-- Product 5: Beljeni Hrast -->
-            <div class="product-card reveal stagger-5" data-category="wood"
-                 data-name="Beljeni Hrast" data-material="MDF" data-price="4.190"
-                 data-desc="MDF paneli zaobljenog profila sa prefinjenom teksturom beljenog hrasta. Premium završna obrada."
-                 data-dim="2440 × 155 mm" data-thickness="12 mm" data-finish="Polu-matt" data-origin="MDF, Evropa"
-                 data-img="imgs/FABD4E63-838A-40C4-8740-A7F0DF0E9445.JPG">
-                <div class="product-card__image">
-                    <img src="imgs/FABD4E63-838A-40C4-8740-A7F0DF0E9445.JPG" alt="Beljeni Hrast" loading="lazy">
-                    <div class="product-card__overlay"><span>Detaljnije</span></div>
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__material">MDF</div>
-                    <div class="product-card__name">Beljeni Hrast</div>
-                    <div class="product-card__bottom">
-                        <div class="product-card__price">4.190 <small>RSD/m²</small></div>
-                        <div class="product-card__dims">2440 × 155 mm</div>
-                    </div>
-                </div>
+            <div class="product-card reveal stagger-5" data-category="standard" data-name="P041" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P041.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P041.JPG" alt="Panel P041" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P041</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P041</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P041" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
             </div>
 
-            <!-- Product 6: Calacatta Bianco -->
-            <div class="product-card reveal stagger-1" data-category="stone"
-                 data-name="Calacatta Bianco" data-material="PVC" data-price="2.990"
-                 data-desc="PVC obloga sa efektom belog Calacatta mermera. Luksuzna završna obrada sjaja koja imitira prirodni kamen."
-                 data-dim="2440 × 610 mm" data-thickness="4 mm" data-finish="Sjaj" data-origin="PVC, Italijanski dizajn"
-                 data-img="imgs/433571BF-4B08-4CD2-98C1-DB5D700316EB.JPG">
-                <div class="product-card__image">
-                    <img src="imgs/433571BF-4B08-4CD2-98C1-DB5D700316EB.JPG" alt="Calacatta Bianco" loading="lazy">
-                    <span class="product-card__badge">Popularno</span>
-                    <div class="product-card__overlay"><span>Detaljnije</span></div>
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__material">PVC — Mermer</div>
-                    <div class="product-card__name">Calacatta Bianco</div>
-                    <div class="product-card__bottom">
-                        <div class="product-card__price">2.990 <small>RSD/m²</small></div>
-                        <div class="product-card__dims">2440 × 610 mm</div>
-                    </div>
-                </div>
+            <div class="product-card reveal stagger-1" data-category="standard" data-name="P042" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P042.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P042.JPG" alt="Panel P042" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P042</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P042</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P042" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
             </div>
 
-            <!-- Product 7: Calacatta Gold -->
-            <div class="product-card reveal stagger-2" data-category="stone"
-                 data-name="Calacatta Gold" data-material="PVC" data-price="3.290"
-                 data-desc="PVC obloga sa efektom Calacatta Gold mermera. Zlatne vene na beloj osnovi za izuzetno elegantan prostor."
-                 data-dim="2440 × 610 mm" data-thickness="4 mm" data-finish="Sjaj" data-origin="PVC, Italijanski dizajn"
-                 data-img="imgs/E1E9EA6A-08A0-4AD1-A6AA-1E7B6CBB4DDC.JPG">
-                <div class="product-card__image">
-                    <img src="imgs/E1E9EA6A-08A0-4AD1-A6AA-1E7B6CBB4DDC.JPG" alt="Calacatta Gold" loading="lazy">
-                    <span class="product-card__badge">Novo</span>
-                    <div class="product-card__overlay"><span>Detaljnije</span></div>
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__material">PVC — Mermer</div>
-                    <div class="product-card__name">Calacatta Gold</div>
-                    <div class="product-card__bottom">
-                        <div class="product-card__price">3.290 <small>RSD/m²</small></div>
-                        <div class="product-card__dims">2440 × 610 mm</div>
-                    </div>
-                </div>
+            <div class="product-card reveal stagger-2" data-category="standard" data-name="P043" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P043.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P043.JPG" alt="Panel P043" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P043</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P043</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P043" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
             </div>
 
-            <!-- Product 8: Dark Emperador -->
-            <div class="product-card reveal stagger-3" data-category="stone"
-                 data-name="Dark Emperador" data-material="PVC" data-price="3.190"
-                 data-desc="PVC obloga sa efektom tamnog Emperador kamena. Duboki braon tonovi za sofisticirane, dramatične enterijere."
-                 data-dim="2440 × 610 mm" data-thickness="4 mm" data-finish="Polu-sjaj" data-origin="PVC, Italijanski dizajn"
-                 data-img="imgs/02E892BD-16E0-4AD9-9F06-BCCD1AF4EDA2.JPG">
-                <div class="product-card__image">
-                    <img src="imgs/02E892BD-16E0-4AD9-9F06-BCCD1AF4EDA2.JPG" alt="Dark Emperador" loading="lazy">
-                    <div class="product-card__overlay"><span>Detaljnije</span></div>
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__material">PVC — Kamen</div>
-                    <div class="product-card__name">Dark Emperador</div>
-                    <div class="product-card__bottom">
-                        <div class="product-card__price">3.190 <small>RSD/m²</small></div>
-                        <div class="product-card__dims">2440 × 610 mm</div>
-                    </div>
-                </div>
+            <div class="product-card reveal stagger-3" data-category="standard" data-name="P044" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P044.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P044.JPG" alt="Panel P044" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P044</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P044</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P044" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
             </div>
 
-            <!-- Product 9: Nero Marquina -->
-            <div class="product-card reveal stagger-4" data-category="stone"
-                 data-name="Nero Marquina" data-material="PVC" data-price="3.490"
-                 data-desc="PVC obloga sa efektom crnog Nero Marquina mermera. Dramatične bele vene na dubokoj crnoj pozadini."
-                 data-dim="2440 × 610 mm" data-thickness="4 mm" data-finish="Sjaj" data-origin="PVC, Italijanski dizajn"
-                 data-img="imgs/A64FB760-D8B8-4980-9B3A-1EA0D411CE21.JPG">
-                <div class="product-card__image">
-                    <img src="imgs/A64FB760-D8B8-4980-9B3A-1EA0D411CE21.JPG" alt="Nero Marquina" loading="lazy">
-                    <div class="product-card__overlay"><span>Detaljnije</span></div>
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__material">PVC — Mermer</div>
-                    <div class="product-card__name">Nero Marquina</div>
-                    <div class="product-card__bottom">
-                        <div class="product-card__price">3.490 <small>RSD/m²</small></div>
-                        <div class="product-card__dims">2440 × 610 mm</div>
-                    </div>
-                </div>
+            <div class="product-card reveal stagger-4" data-category="standard" data-name="P045" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P045.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P045.JPG" alt="Panel P045" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P045</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P045</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P045" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
             </div>
 
-            <!-- Product 10: Verde Guatemala -->
-            <div class="product-card reveal stagger-5" data-category="stone"
-                 data-name="Verde Guatemala" data-material="PVC" data-price="3.690"
-                 data-desc="PVC obloga sa efektom zelenog Guatemala mermera. Jedinstvene zelene nijanse za prostorije sa karakterom."
-                 data-dim="2440 × 610 mm" data-thickness="4 mm" data-finish="Sjaj" data-origin="PVC, Italijanski dizajn"
-                 data-img="imgs/C9452514-338E-4BB2-BD67-522D0E07C14D.JPG">
-                <div class="product-card__image">
-                    <img src="imgs/C9452514-338E-4BB2-BD67-522D0E07C14D.JPG" alt="Verde Guatemala" loading="lazy">
-                    <span class="product-card__badge">Novo</span>
-                    <div class="product-card__overlay"><span>Detaljnije</span></div>
-                </div>
-                <div class="product-card__info">
-                    <div class="product-card__material">PVC — Mermer</div>
-                    <div class="product-card__name">Verde Guatemala</div>
-                    <div class="product-card__bottom">
-                        <div class="product-card__price">3.690 <small>RSD/m²</small></div>
-                        <div class="product-card__dims">2440 × 610 mm</div>
-                    </div>
-                </div>
+            <div class="product-card reveal stagger-5" data-category="standard" data-name="P046" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P046.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P046.JPG" alt="Panel P046" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P046</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P046</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P046" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-1" data-category="standard" data-name="P073" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P073.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P073.JPG" alt="Panel P073" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P073</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P073</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P073" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-2" data-category="standard" data-name="P074" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P074.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P074.JPG" alt="Panel P074" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P074</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P074</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P074" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-3" data-category="standard" data-name="P085" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P085.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P085.JPG" alt="Panel P085" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P085</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P085</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P085" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-4" data-category="standard" data-name="P095" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P095.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P095.JPG" alt="Panel P095" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P095</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P095</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P095" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-5" data-category="standard" data-name="P098" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P098.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P098.JPG" alt="Panel P098" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P098</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P098</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P098" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-1" data-category="standard" data-name="P104" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P104.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P104.JPG" alt="Panel P104" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P104</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P104</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P104" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-2" data-category="standard" data-name="P107" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P107.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P107.JPG" alt="Panel P107" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P107</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P107</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P107" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-3" data-category="standard" data-name="P112" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P112.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P112.JPG" alt="Panel P112" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P112</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P112</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P112" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-4" data-category="standard" data-name="P114" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P114.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P114.JPG" alt="Panel P114" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P114</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P114</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P114" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-5" data-category="standard" data-name="P116" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P116.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P116.JPG" alt="Panel P116" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P116</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P116</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P116" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-1" data-category="standard" data-name="P141" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P141.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P141.JPG" alt="Panel P141" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P141</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P141</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P141" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-2" data-category="standard" data-name="P147" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P147.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P147.JPG" alt="Panel P147" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P147</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P147</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P147" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-3" data-category="standard" data-name="P174" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P174.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P174.JPG" alt="Panel P174" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P174</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P174</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P174" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-4" data-category="standard" data-name="P200" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P200.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P200.JPG" alt="Panel P200" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P200</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P200</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P200" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-5" data-category="standard" data-name="P203" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P203.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P203.JPG" alt="Panel P203" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P203</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P203</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P203" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-1" data-category="standard" data-name="P204" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P204.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P204.JPG" alt="Panel P204" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P204</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P204</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P204" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-2" data-category="standard" data-name="P208" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P208.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P208.JPG" alt="Panel P208" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P208</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P208</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P208" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-3" data-category="standard" data-name="P209" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/P209.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/P209.JPG" alt="Panel P209" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">P209</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: P209</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel P209" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-4" data-category="standard" data-name="6608" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/6608.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/6608.JPG" alt="Panel 6608" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">6608</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: 6608</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel 6608" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-5" data-category="standard" data-name="6609" data-material="MDF Panel" data-desc="Standardni MDF panel sa prirodnom teksturom drveta." data-img="imgs/paneli obicni/6609.JPG">
+                <div class="product-card__image"><img src="imgs/paneli obicni/6609.JPG" alt="Panel 6609" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Standardni Panel</div><div class="product-card__name">6609</div><div class="product-card__bottom"><div class="product-card__dims">Šifra: 6609</div><a href="mailto:info@adapaneli.rs?subject=Upit za panel 6609" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-1" data-category="flexi" data-name="Flexi Panel" data-material="Fleksibilni MDF" data-desc="Posebna vrsta MDF ploča za oblaganje zakrivljenih površina. Dimenzija: 2800x600x12mm." data-img="imgs/flexi paneli/Fleksibilni mdf.jpeg">
+                <div class="product-card__image"><img src="imgs/flexi paneli/Fleksibilni mdf.jpeg" alt="Flexi Panel" loading="lazy"><span class="product-card__badge">Flexi</span><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Flexi Panel</div><div class="product-card__name">Fleksibilni MDF</div><div class="product-card__bottom"><div class="product-card__dims">2800 × 600 × 12 mm</div><a href="mailto:info@adapaneli.rs?subject=Upit za Flexi Panel" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-2" data-category="flexi" data-name="Flexi Panel" data-material="Fleksibilni MDF" data-desc="Posebna vrsta MDF ploča za oblaganje zakrivljenih površina. Dimenzija: 2800x600x12mm." data-img="imgs/flexi paneli/Flexi4.jpg">
+                <div class="product-card__image"><img src="imgs/flexi paneli/Flexi4.jpg" alt="Flexi Panel" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Flexi Panel</div><div class="product-card__name">Fleksibilni MDF</div><div class="product-card__bottom"><div class="product-card__dims">2800 × 600 × 12 mm</div><a href="mailto:info@adapaneli.rs?subject=Upit za Flexi Panel" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-3" data-category="flexi" data-name="Flexi Panel" data-material="Fleksibilni MDF" data-desc="Posebna vrsta MDF ploča za oblaganje zakrivljenih površina. Dimenzija: 2800x600x12mm." data-img="imgs/flexi paneli/1000015904.jpg">
+                <div class="product-card__image"><img src="imgs/flexi paneli/1000015904.jpg" alt="Flexi Panel" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Flexi Panel</div><div class="product-card__name">Fleksibilni MDF</div><div class="product-card__bottom"><div class="product-card__dims">2800 × 600 × 12 mm</div><a href="mailto:info@adapaneli.rs?subject=Upit za Flexi Panel" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-4" data-category="flexi" data-name="Flexi Panel" data-material="Fleksibilni MDF" data-desc="Posebna vrsta MDF ploča za oblaganje zakrivljenih površina. Dimenzija: 2800x600x12mm." data-img="imgs/flexi paneli/1000029517.jpg">
+                <div class="product-card__image"><img src="imgs/flexi paneli/1000029517.jpg" alt="Flexi Panel" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Flexi Panel</div><div class="product-card__name">Fleksibilni MDF</div><div class="product-card__bottom"><div class="product-card__dims">2800 × 600 × 12 mm</div><a href="mailto:info@adapaneli.rs?subject=Upit za Flexi Panel" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-5" data-category="flexi" data-name="Flexi Panel" data-material="Fleksibilni MDF" data-desc="Posebna vrsta MDF ploča za oblaganje zakrivljenih površina. Dimenzija: 2800x600x12mm." data-img="imgs/flexi paneli/1000029518.jpg">
+                <div class="product-card__image"><img src="imgs/flexi paneli/1000029518.jpg" alt="Flexi Panel" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Flexi Panel</div><div class="product-card__name">Fleksibilni MDF</div><div class="product-card__bottom"><div class="product-card__dims">2800 × 600 × 12 mm</div><a href="mailto:info@adapaneli.rs?subject=Upit za Flexi Panel" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-1" data-category="flexi" data-name="Flexi Panel" data-material="Fleksibilni MDF" data-desc="Posebna vrsta MDF ploča za oblaganje zakrivljenih površina. Dimenzija: 2800x600x12mm." data-img="imgs/flexi paneli/6.png">
+                <div class="product-card__image"><img src="imgs/flexi paneli/6.png" alt="Flexi Panel" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Flexi Panel</div><div class="product-card__name">Fleksibilni MDF</div><div class="product-card__bottom"><div class="product-card__dims">2800 × 600 × 12 mm</div><a href="mailto:info@adapaneli.rs?subject=Upit za Flexi Panel" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-2" data-category="flexi" data-name="Flexi Panel" data-material="Fleksibilni MDF" data-desc="Posebna vrsta MDF ploča za oblaganje zakrivljenih površina. Dimenzija: 2800x600x12mm." data-img="imgs/flexi paneli/8.png">
+                <div class="product-card__image"><img src="imgs/flexi paneli/8.png" alt="Flexi Panel" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Flexi Panel</div><div class="product-card__name">Fleksibilni MDF</div><div class="product-card__bottom"><div class="product-card__dims">2800 × 600 × 12 mm</div><a href="mailto:info@adapaneli.rs?subject=Upit za Flexi Panel" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
+            </div>
+
+            <div class="product-card reveal stagger-3" data-category="flexi" data-name="Flexi Panel" data-material="Fleksibilni MDF" data-desc="Posebna vrsta MDF ploča za oblaganje zakrivljenih površina. Dimenzija: 2800x600x12mm." data-img="imgs/flexi paneli/9.png">
+                <div class="product-card__image"><img src="imgs/flexi paneli/9.png" alt="Flexi Panel" loading="lazy"><div class="product-card__overlay"><span>Detaljnije</span></div></div>
+                <div class="product-card__info"><div class="product-card__material">Flexi Panel</div><div class="product-card__name">Fleksibilni MDF</div><div class="product-card__bottom"><div class="product-card__dims">2800 × 600 × 12 mm</div><a href="mailto:info@adapaneli.rs?subject=Upit za Flexi Panel" class="product-card__inquiry" onclick="event.stopPropagation()">Upit</a></div></div>
             </div>
 
             <div class="collection__empty" id="emptyState">
@@ -1753,11 +1876,12 @@
         </div>
     </section>
 
+
     <!-- ==================== BENEFITS ==================== -->
     <section class="benefits" id="prednosti">
         <div class="benefits__header">
             <div class="section-label">Prednosti</div>
-            <h2 class="section-title reveal">Zašto <em>Ada Paneli</em></h2>
+            <h2 class="section-title reveal">Zašto <em>Terra Walls</em></h2>
         </div>
         <div class="benefits__grid">
             <div class="benefit reveal stagger-1">
@@ -1817,14 +1941,14 @@
 
     <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
-        <a href="#" class="footer__logo">Ada <span>Paneli</span></a>
+        <a href="#" class="footer__logo">Terra <span>Walls</span></a>
         <ul class="footer__links">
             <li><a href="#o-nama">O nama</a></li>
             <li><a href="#kolekcija">Kolekcija</a></li>
             <li><a href="#prednosti">Prednosti</a></li>
             <li><a href="#kontakt">Kontakt</a></li>
         </ul>
-        <div class="footer__copy">&copy; 2026 Ada Paneli. Sva prava zadržana.</div>
+        <div class="footer__copy">&copy; 2026 Terra Walls. Sva prava zadržana.</div>
     </footer>
 
     <!-- ==================== MODAL ==================== -->
@@ -1859,8 +1983,7 @@
                         <div class="modal__spec-value" id="modalOrigin"></div>
                     </div>
                 </div>
-                <div class="modal__price" id="modalPrice"></div>
-                <a href="mailto:info@adapaneli.rs" class="modal__cta">Zatražite uzorak</a>
+                <a href="mailto:info@adapaneli.rs" class="modal__cta">Pošalji upit</a>
             </div>
         </div>
     </div>
@@ -1975,8 +2098,7 @@
             document.getElementById('modalThick').textContent = card.getAttribute('data-thickness');
             document.getElementById('modalFinish').textContent = card.getAttribute('data-finish');
             document.getElementById('modalOrigin').textContent = card.getAttribute('data-origin');
-            document.getElementById('modalPrice').innerHTML = card.getAttribute('data-price') + ' <small>RSD/m²</small>';
-
+            
             modal.classList.add('open');
             document.body.style.overflow = 'hidden';
         }
